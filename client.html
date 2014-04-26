@@ -27,7 +27,37 @@
             	GLOBAL_DATA += data + "<br />";
                 $("#message").html(GLOBAL_DATA);
                 
-                func('message received');
+                func('send message');
+            });
+            
+            socket.on("connecting", function () {
+                // 初めての接続時などに発生
+                console.log("Client：connecting");
+            });
+
+            socket.on("connection", function () {
+                // 初めての接続時などに発生
+                console.log("Client：connection");
+            });
+
+            socket.on("disconnect", function () {
+                // サーバを終了させると発生
+                console.log("Client：disconnect");
+            });
+
+            socket.on("connect_failed", function () {
+                // 未確認
+                console.log("Client：connect failed");
+            });
+
+            socket.on("reconnecting", function () {
+                // サーバを終了させると発生
+                console.log("Client：reconnecting");
+            });
+
+            socket.on("reconnect", function () {
+                // サーバを終了後、再度サーバを起動すると発生
+                console.log("Client：reconnect");
             });
         });
     </script>
